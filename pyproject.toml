@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Mark Silva <mark.silva@tesobe.com>"]
 readme = "README.md"
-packages = [{include = "src"}]
+packages = [{include = "obp_swagger_codegen", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -30,5 +30,8 @@ line_length = 100
 [tool.black]
 max-line-length = 100
 
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
 [tool.poetry.scripts]
-generate = "src.obp_swagger_codegen.main:generate"
+generate = "obp_swagger_codegen.main:generate"

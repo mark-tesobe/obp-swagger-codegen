@@ -1,4 +1,4 @@
-import src.obp_swagger_codegen.main as obp_sc
+import obp_swagger_codegen.main as obp_sc
 
 
 def test_pars_arguments() -> None:
