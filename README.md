@@ -25,3 +25,10 @@ or
 > make test //Run tests.
 ```
 
+#### Other Make Targets
+```
+> make codegen //Direct command for swagger codegen (Optional `source` argument for location of swagger spec).
+> make setup_install //Install generated Pythin SDK to local Python virtual environment.
+> make setup_distribution //Generate Python distribution archives.
+> make setup_twine //Upload generated SDK to pypi (Optional `twinerepo` argument).
+```
