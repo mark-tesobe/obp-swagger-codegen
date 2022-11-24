@@ -8,6 +8,8 @@ packages = [{include = "obp_swagger_codegen", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+twine = "^4.0.1"
+build = "^0.9.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.10.0"
