@@ -43,7 +43,7 @@ def generate() -> None:
         [
             "java",
             "-jar",
-            "swagger-codegen-cli-2.2.1.jar",
+            "swagger-codegen-cli-2.4.9.jar",
             "generate",
             "-i",
             f"{source}",

@@ -5,7 +5,7 @@ test:
 	poetry run pytest
 
 codegen:
-	java -jar swagger-codegen-cli-2.2.1.jar generate -o $(path) -i $(source) -l python -c config.json
+	java -jar swagger-codegen-cli-2.4.29.jar generate -o $(path) -i $(source) -l python -c config.json
 
 install:
 	poetry install --without tests
