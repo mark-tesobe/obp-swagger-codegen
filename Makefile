@@ -1,6 +1,9 @@
 run:
 	poetry run generate
 
+clean:
+	poetry run clean
+
 test:
 	poetry run pytest
 

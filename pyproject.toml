@@ -37,3 +37,4 @@ pythonpath = ["src"]
 
 [tool.poetry.scripts]
 generate = "obp_swagger_codegen.main:generate"
+clean = "obp_swagger_codegen.main:clean_imports"

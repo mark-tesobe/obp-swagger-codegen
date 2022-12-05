@@ -5,7 +5,7 @@ This script allows to generate Python code from swagger openapi spec.
 
 import argparse
 import subprocess
-from typing import Tuple
+from typing import List, Tuple
 
 DEFAULT_PATH = "output"
 DEFAULT_SOURCE = (
@@ -15,6 +15,7 @@ DEFAULT_SOURCE = (
 
 def parse_arguments() -> Tuple[str, str]:
     """Read command line argument options."""
+
     argument_parser = argparse.ArgumentParser()
     argument_parser.add_argument(
         "--output",
@@ -32,6 +33,41 @@ def parse_arguments() -> Tuple[str, str]:
     output = args.output
     source = args.source
     return (output, source)
+
+
+def remove_line_file(lines_to_remove: List[str], file_path: str) -> None:
+    """Remove a line in a specified file."""
+
+    with open(file_path, "+r") as file:
+        lines = file.readlines()
+        file.seek(0)
+        for line in lines:
+            if line.rstrip() not in lines_to_remove:
+                file.write(line)
+                file.truncate()
+            else:
+                print(f"Removing line `{line}` from {file_path}")
+
+
+def clean_imports() -> None:
+    """Remove invalid module import."""
+
+    print("Cleaning imports..")
+    imports_to_remove = [
+        "from obp_python.models.consumer_json import ConsumerJSON",
+        "from obp_python.models.metrics_json import MetricsJSON",
+    ]
+    file_name = "__init__.py"
+    files = [
+        f"{DEFAULT_PATH}/obp_python/{file_name}",
+        f"{DEFAULT_PATH}/obp_python/models/{file_name}",
+    ]
+    for file in files:
+        remove_line_file(imports_to_remove, file)
+    # for file in files:
+    #    for line_to_remove in imports_to_remove:
+    #        remove_line_file(line_to_remove, file)
+    print("Done cleaning imports.")
 
 
 def generate() -> None:
